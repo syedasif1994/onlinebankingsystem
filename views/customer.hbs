@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/css/customer.css">
+
+
+
+<header class="header">
+
+  <div class="hdleft">
+
+    <img src="img/logo.png">
+  </div>
+
+
+  <div class="hdmid">
+
+    <ul class="navbar">
+      <li><a href="/">Home</a></li>
+      <li><a href="news">News</a></li>
+      <li><a href="customer" class="active">Customer</a></li>
+      <li><a href="about">About us</a></li>
+    </ul>
+  </div>
+
+
+  <div class="hdright">
+
+    <input type="search" class="search" placeholder="CUSTOMER NAME">
+    <button class="callme">Call Now</button>
+    <button class="EmailUs">Email Now</button>
+  </div>
+</header>
+
+<main>
+
+
+  <div class="item">Name</div>
+  <div class="item">Current Balance</div>
+  <div class="item"> </div>
+
+
+
+  {{#each customer}}
+  <div class="item1"><b> {{#each this}} {{name}} {{/each}}</b>
+  </div>
+  <div class="item2">{{#each this}} {{balance}} {{/each}}</div>
+  <div class="item3">
+    <details> <br>
+
+      <p>FULL NAME: {{#each this}}{{name}}{{/each}} {{#each this}}{{surname}}{{/each}} </p>
+      <p>EMAIL: {{#each this}}{{email}}{{/each}}</p>
+      <p>CONTACT NO: {{#each this}}{{contact}}{{/each}} </p>
+      <p>CITY: {{#each this}}{{address}}{{/each}} </p>
+      <p>GENDER: {{#each this}}{{gender}}{{/each}} &nbsp; &nbsp; AGE:{{#each this}}{{age}}{{/each}} </p>
+
+    </details>
+  </div>
+  {{/each}}
+
+</main>
+<aside>
+  <form id="transfer" method="post" action="/update">
+    <select name="userid">
+      {{#each customer}}
+      <option value="{{#each this}}{{_id}}{{/each}}" class="option">{{#each this}}{{name}}{{/each}}</option>
+      {{/each}}
+    </select>
+    <input type="number" class="amount" name="balance">
+    <input type="submit" class="submit">
+  </form>
+</aside>
